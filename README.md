@@ -9,3 +9,5 @@
 Data Infrastructure Team at Facebook developed Hive. Apache Hive is also one of the technologies that are being used to address the requirements at Facebook. It is very popular with all the users internally at Facebook.
 
 ## Hive Architecture
+
+![](/images/hive2.png)
