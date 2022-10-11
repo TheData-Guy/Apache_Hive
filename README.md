@@ -44,3 +44,23 @@ The Hive driver receives the HiveQL statements submitted by the user through the
 - It Maintain MetaData For Execution.
 - It Collects Output and Display.
 
+### Hive Compiler 
+
+It performs the compilation of the HiveQL query. This converts the query to an execution plan. The plan contains the tasks. It also contains steps needed to be performed by the MapReduce to get the output as translated by the query. The compiler in Hive converts the query to an Abstract Syntax Tree (AST). First, check for compatibility and compile-time errors, then converts the AST to a Directed Acyclic Graph (DAG).
+
+### Hive Optimizer :
+
+It performs various transformations on the execution plan to provide optimized DAG. It aggregates the transformations together, such as converting a pipeline of joins to a single join, for better performance. The optimizer can also split the tasks, such as applying a transformation on data before a reduce operation, to provide better performance.
+
+### Hive Executor 
+
+After the compilation and optimization steps, the execution engine uses Hadoop to execute the prepared execution plan, which is dependent on the compiler’s execution plan.
+
+### Hive Metastore 
+
+- Metastore stores metadata information about tables and partitions, including column and column type information, in order to improve search engine indexing.
+- The metastore also stores information about the serializer and deserializer as well as HDFS files where data is stored and provides data storage. It is usually a relational database. Hive metadata can be queried and modified through Metastore.
+- Internally Hive Use Derby Database for Metastore
+
+
+ 
