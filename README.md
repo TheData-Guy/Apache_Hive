@@ -63,4 +63,23 @@ After the compilation and optimization steps, the execution engine uses Hadoop t
 - Internally Hive Use Derby Database for Metastore
 
 
- 
+## Feature of Hive 
+
+- Hive supports external tables which make it possible to process data without actually storing in HDFS.
+- Apache Hive fits the low-level interface requirement of Hadoop perfectly.
+- It also supports partitioning of data at the level of tables to improve performance.
+- Hive has a rule based optimizer for optimizing logical plans.
+- It is scalable, familiar, and extensible.
+- Using HiveQL doesn’t require any knowledge of programming language, Knowledge of basic SQL query is enough.
+- We can easily process structured data in Hadoop using Hive.
+- Querying in Hive is very simple as it is similar to SQL.
+- We can also run Ad-hoc queries for the data analysis using Hive.
+- Hive provides data summarization, query, and analysis in much easier manner.
+
+## Limitation of Apache Hive 
+
+- Apache does not offer real-time queries and row level updates.
+- Hive also provides acceptable latency for interactive data browsing.
+- It is not good for online transaction processing ( OLTP ).
+- Latency for Apache Hive queries is generally very high.
+Not used for row-level updates for real-time systems.
