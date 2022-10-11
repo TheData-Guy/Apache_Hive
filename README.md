@@ -33,3 +33,14 @@ Hive provides numerous services, including the Hive server2, Beeline, etc. The s
 
 - Hive server1, which is also known as a Thrift server, is used to communicate with Hive across platforms. Different client applications can submit requests to Hive and receive the results using this server.
 - HiveServer2 handled concurrent requests from more than one client, so it was replaced by HiveServer1.
+
+### Hive Driver
+
+The Hive driver receives the HiveQL statements submitted by the user through the command shell and creates session handles for the query.
+
+- It Acts Like a Controller For HQL Statements.
+- It Create a Session for Query.
+- It Maintain a Life Cycle of HQL
+- It Maintain MetaData For Execution.
+- It Collects Output and Display.
+
