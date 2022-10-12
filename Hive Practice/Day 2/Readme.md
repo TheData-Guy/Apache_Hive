@@ -23,11 +23,15 @@
 ### To see the primary information of the Hive table such as only the list of columns and its data types.
 
             describe department_data;
-### The complete table information is displayed in a clean manner by describe formatted commanb.
+            
+### The complete table information is displayed in a clean manner by describe formatted command.
 
             describe formatted department_data;
+            
 ### The describe extended command will show the detailed information of the table such as list of columns , data type of the columns,table type,location of the table,table size and so on.
+
             describe extended department_data;    
             
 ### For data load from local
-load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;
+
+          load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;
