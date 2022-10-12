@@ -36,14 +36,16 @@
 
           load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;
           
-# Display column name
-set hive.cli.print.header = true;
+### Display column name 
 
-# Load data from hdfs location
+        set hive.cli.print.header = true;
+
+### Load data from HDFS location
+
 load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;
 
 
-# Create external table 
+### Create external table 
 
 create external table department_data_external                                                                                          
     > (                                                                                                                                       
@@ -58,7 +60,7 @@ create external table department_data_external
     
     
     
-# work with Array data types
+### work with Array data types
 
 create table employee                                                                                                                   
     > (                                                                                                                                       
@@ -73,7 +75,7 @@ create table employee
 load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employee; 
 
 
-# Get element by index in hive array data type
+### Get element by index in hive array data type
 
 select id, name, skills[0] as prime_skill from employee;
 
@@ -86,7 +88,7 @@ select
     > from employee; 
     
     
-# table for map data
+### table for map data
 
 create table employee_map_data                                                                                                          
     > (                                                                                                                                       
@@ -107,7 +109,7 @@ create table employee_map_data
     > details["gender"] as employee_gender                                                                                                    
     > from employee_map_data; 
  
- # map functions
+ #### map functions
  select                                                                                                                                  
     > id,                                                                                                                                     
     > name,                                                                                                                                   
