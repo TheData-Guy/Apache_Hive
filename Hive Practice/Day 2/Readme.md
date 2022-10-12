@@ -32,20 +32,20 @@
 
             describe extended department_data;    
             
-### Loading the Data From Local Path
+### Loading the Data From Local Path.
 
           load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;
           
-### Display column name 
+### Display column name.
 
         set hive.cli.print.header = true;
 
-### Load data from HDFS location
+### Load data from HDFS location.
 
         load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;
 
 
-### Create external table 
+### Creating External table .
 
         create external table department_data_external                                                                                          
              (                                                                                                                                       
@@ -60,7 +60,7 @@
     
     
     
-### work with Array data types
+### Creating Table Schema For Array data types.
 
         create table employee                                                                                                                   
              (                                                                                                                                       
@@ -72,50 +72,58 @@
              fields terminated by ','                                                                                                                
              collection items terminated by ':';   
              
-             
-load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employee; 
+### Loading the Data From Local Path. 
+
+            load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employee; 
 
 
-### Get element by index in hive array data type
+### Get Element by index in hive Array data type.
 
-select id, name, skills[0] as prime_skill from employee;
+            select id, name, skills[0] as prime_skill from employee;
+            
+### Using Hive Built-in Function on Array Data Type.
 
         select                                                                                                                                  
-            > id,                                                                                                                                     
-            > name,                                                                                                                                   
-            > size(skills) as size_of_each_array,                                                                                                     
-            > array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
-            > sort_array(skills) as sorted_array                                                                                                                     
-            > from employee; 
+             id,                                                                                                                                     
+             name,                                                                                                                                   
+             size(skills) as size_of_each_array,                                                                                                     
+             array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
+             sort_array(skills) as sorted_array                                                                                                                     
+             from employee; 
     
     
-### table for map data
+### Creating Table Schema For Map data types.
 
         create table employee_map_data                                                                                                          
-            > (                                                                                                                                       
-            > id int,                                                                                                                                 
-            > name string,                                                                                                                            
-            > details map<string,string>                                                                                                              
-            > )                                                                                                                                       
-            > row format delimited                                                                                                                    
-            > fields terminated by ','                                                                                                                
-            > collection items terminated by '|'                                                                                                      
-            > map keys terminated by ':';
-    
- load data local inpath 'file:///tmp/hive_class/map_data.csv' into table employee_map_data;
+             (                                                                                                                                       
+             id int,                                                                                                                                 
+             name string,                                                                                                                            
+             details map<string,string>                                                                                                              
+             )                                                                                                                                       
+             row format delimited                                                                                                                    
+             fields terminated by ','                                                                                                                
+             collection items terminated by '|'                                                                                                      
+             map keys terminated by ':';
+            
+### Loading the Data From Local Path. 
+ 
+            load data local inpath 'file:///tmp/hive_class/map_data.csv' into table employee_map_data;
+            
+### Get Value by Key in hive Map data type. 
+
+         select                                                                                                                                  
+             id,                                                                                                                                     
+             name,                                                                                                                                   
+             details["gender"] as employee_gender                                                                                                    
+             from employee_map_data; 
+ 
+ Using Hive Built-in Function on Map Data Type.
  
          select                                                                                                                                  
-            > id,                                                                                                                                     
-            > name,                                                                                                                                   
-            > details["gender"] as employee_gender                                                                                                    
-            > from employee_map_data; 
- 
- #### map functions
-         select                                                                                                                                  
-            > id,                                                                                                                                     
-            > name,                                                                                                                                   
-            > details,                                                                                                                                
-            > size(details) as size_of_each_map,                                                                                                      
-            > map_keys(details) as distinct_map_keys,                                                                                                 
-            > map_values(details) as distinct_map_values                                                                                              
-            > from employee_map_data;
+             id,                                                                                                                                     
+             name,                                                                                                                                   
+             details,                                                                                                                                
+             size(details) as size_of_each_map,                                                                                                      
+             map_keys(details) as distinct_map_keys,                                                                                                 
+             map_values(details) as distinct_map_values                                                                                              
+             from employee_map_data;
