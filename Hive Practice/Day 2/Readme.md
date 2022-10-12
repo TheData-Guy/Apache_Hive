@@ -115,4 +115,4 @@ create table employee_map_data
     > size(details) as size_of_each_map,                                                                                                      
     > map_keys(details) as distinct_map_keys,                                                                                                 
     > map_values(details) as distinct_map_values                                                                                              
-    > from employee_map_data; 
+    > from employee_map_data;
