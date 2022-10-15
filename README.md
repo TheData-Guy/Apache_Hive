@@ -83,3 +83,11 @@ After the compilation and optimization steps, the execution engine uses Hadoop t
 - It is not good for online transaction processing ( OLTP ).
 - Latency for Apache Hive queries is generally very high.
 - Not used for row-level updates for real-time systems...
+
+
+## Hive Practice DAY 1
+
+
+## Hive Practice DAY 2 
+
+
