@@ -1,9 +1,11 @@
-# use this command to get details about serilization and deserialization
+# Hive Day 4
 
-describe formatted sales_data_pq_final;
+## Using  this command to get details about Serilization and Deserialization
+
+        describe formatted sales_data_pq_final;
 
 
-# create table as CSV SerDe
+## create table as CSV SerDe
 
 create table csv_table                                                                                                                  
     > (                                                                                                                                       
