@@ -90,4 +90,5 @@ After the compilation and optimization steps, the execution engine uses Hadoop t
 
 ## Hive Practice DAY 2 
 
+### Understanding Different File Formats in Big Data 
 
