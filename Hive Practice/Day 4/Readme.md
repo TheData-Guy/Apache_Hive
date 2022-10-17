@@ -192,13 +192,13 @@
 
 ## Multilevel Partition Example
 
-create table sales_data_dynamic_multilevel_part_v1                                                                                      
-    > (
-    > ORDERNUMBER int,                                                                                                                        
-    > QUANTITYORDERED int,                                                                                                                    
-    > SALES float                                                                                                                             
-    > )
-    > partitioned by (COUNTRY string, YEAR_ID int); 
+        create table sales_data_dynamic_multilevel_part_v1                                                                                      
+             (
+             ORDERNUMBER int,                                                                                                                        
+             QUANTITYORDERED int,                                                                                                                    
+             SALES float                                                                                                                             
+             )
+              partitioned by (COUNTRY string, YEAR_ID int); 
     
 # Loading the  data in Multilevel Partitions Table.
 
