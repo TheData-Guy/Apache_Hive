@@ -54,36 +54,36 @@
         load data local inpath 'file:///tmp/hive_class/json_file.json' into table json_table;
 
 
-## create csv table for sales data
+## Creating The Sales Table Schema 
 
-create table sales_order_data_csv_v1
-(
-ORDERNUMBER int,
-QUANTITYORDERED int,
-PRICEEACH float,
-ORDERLINENUMBER int,
-SALES float,
-STATUS string,
-QTR_ID int,
-MONTH_ID int,
-YEAR_ID int,
-PRODUCTLINE string,
-MSRP int,
-PRODUCTCODE string,
-PHONE string,
-CITY string,
-STATE string,
-POSTALCODE string,
-COUNTRY string,
-TERRITORY string,
-CONTACTLASTNAME string,
-CONTACTFIRSTNAME string,
-DEALSIZE string
-)
-row format delimited
-fields terminated by ','
-tblproperties("skip.header.line.count"="1")
-; 
+                create table sales_order_data_csv_v1
+                (
+                ORDERNUMBER int,
+                QUANTITYORDERED int,
+                PRICEEACH float,
+                ORDERLINENUMBER int,
+                SALES float,
+                STATUS string,
+                QTR_ID int,
+                MONTH_ID int,
+                YEAR_ID int,
+                PRODUCTLINE string,
+                MSRP int,
+                PRODUCTCODE string,
+                PHONE string,
+                CITY string,
+                STATE string,
+                POSTALCODE string,
+                COUNTRY string,
+                TERRITORY string,
+                CONTACTLASTNAME string,
+                CONTACTFIRSTNAME string,
+                DEALSIZE string
+                )
+                row format delimited
+                fields terminated by ','
+                tblproperties("skip.header.line.count"="1")
+                ; 
 
 # load sales_order_data.csv data into above mentioned tables
 
