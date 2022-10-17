@@ -3,6 +3,10 @@
 ## Using  this command to get details about Serilization and Deserialization
 
         describe formatted sales_data_pq_final;
+        
+            SerDe Library: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+            InputFormat:   org.apache.hadoop.mapred.TextInputFormat
+            OutputFormat:  org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat    
 
 
 ## create table as CSV SerDe
