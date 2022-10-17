@@ -9,25 +9,25 @@
             OutputFormat:  org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat    
 
 
-## create table as CSV SerDe
+## Creating Table Schema to Stor CSV File Data With Specific Properties.
 
-create table csv_table                                                                                                                  
-    > (                                                                                                                                       
-    > name string,                                                                                                                            
-    > location string                                                                                                                         
-    > )                                                                                                                                       
-    > row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'                                                                           
-    > with serdeproperties (                                                                                                                  
-    >  "separatorChar" = ",",                                                                                                                 
-    >  "quoteChar" = "\"",                                                                                                                    
-    >  "escapeChar" = "\\"                                                                                                                    
-    > )                                                                                                                                       
-    > stored as textfile                                                                                                                      
-    > tblproperties ("skip.header.line.count" = "1"); 
+                create table csv_table                                                                                                                  
+                     (                                                                                                                                       
+                     name string,                                                                                                                            
+                     location string                                                                                                                         
+                     )                                                                                                                                       
+                     row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'                                                                           
+                     with serdeproperties (                                                                                                                  
+                      "separatorChar" = ",",                                                                                                                 
+                      "quoteChar" = "\"",                                                                                                                    
+                      "escapeChar" = "\\"                                                                                                                    
+                     )                                                                                                                                       
+                     stored as textfile                                                                                                                      
+                     tblproperties ("skip.header.line.count" = "1"); 
     
-# load data from local
+## Loading the Data from the Local File System
 
-load data local inpath 'file:///tmp/hive_class/csv_file.csv' into table csv_table;
+        load data local inpath 'file:///tmp/hive_class/csv_file.csv' into table csv_table;
     
 
 # download hive catalog jar file , if serde libraries are not imported
