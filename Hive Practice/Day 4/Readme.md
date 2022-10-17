@@ -32,7 +32,7 @@
 
 # Download hive catalog jar file , if serde libraries are not imported
 
-        https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/
+        Downloading the Hive Catalog Jar File [Click Here](https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/)
 
 # Adding jar file into your hive shell
 
