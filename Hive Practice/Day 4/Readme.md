@@ -30,35 +30,31 @@
         load data local inpath 'file:///tmp/hive_class/csv_file.csv' into table csv_table;
     
 
-# download hive catalog jar file , if serde libraries are not imported
+# Download hive catalog jar file , if serde libraries are not imported
 
-https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/
+        https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/
 
-# add jar file into your hive shell
+# Adding jar file into your hive shell
 
-hive> add jar /tmp/hive_class/hive-hcatalog-core-0.14.0.jar;
+         add jar /tmp/hive_class/hive-hcatalog-core-0.14.0.jar;
 
 
-# create json table
+## Creating Json Table Schema 
 
-create table json_table                                                                                                                 
-    > ( name string,                                                                                                                          
-    > id int,                                                                                                                                 
-    > skills array<string>                                                                                                                    
-    > )                                                                                                                                       
-    > row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'                                                                              
-    > stored as textfile; 
+        create table json_table                                                                                                                 
+             ( name string,                                                                                                                          
+             id int,                                                                                                                                 
+             skills array<string>                                                                                                                    
+             )                                                                                                                                       
+             row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'                                                                              
+             stored as textfile; 
     
-# load data into json
+## Loading the Data in Json Table from Local File System.
 
-load data local inpath 'file:///tmp/hive_class/json_file.json' into table json_table;
+        load data local inpath 'file:///tmp/hive_class/json_file.json' into table json_table;
 
 
-# download this sales data
-
-https://github.com/shashank-mishra219/Hive-Class/blob/main/sales_order_data.csv
-
-# create csv table for sales data
+## create csv table for sales data
 
 create table sales_order_data_csv_v1
 (
