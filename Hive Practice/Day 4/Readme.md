@@ -54,7 +54,7 @@
         load data local inpath 'file:///tmp/hive_class/json_file.json' into table json_table;
 
 
-## Creating The Sales Table Schema 
+## Creating The Sales Table Schema.
 
                 create table sales_order_data_csv_v1
                 (
@@ -85,36 +85,41 @@
                 tblproperties("skip.header.line.count"="1")
                 ; 
 
-# load sales_order_data.csv data into above mentioned tables
+## Then Loading the Data from the Local File System.
 
-create table sales_order_data_orc
-(
-ORDERNUMBER int,
-QUANTITYORDERED int,
-PRICEEACH float,
-ORDERLINENUMBER int,
-SALES float,
-STATUS string,
-QTR_ID int,
-MONTH_ID int,
-YEAR_ID int,
-PRODUCTLINE string,
-MSRP int,
-PRODUCTCODE string,
-PHONE string,
-CITY string,
-STATE string,
-POSTALCODE string,
-COUNTRY string,
-TERRITORY string,
-CONTACTLASTNAME string,
-CONTACTFIRSTNAME string,
-DEALSIZE string
-)
-stored as orc;
+        load data local inpath 'file:///tmp/hive_class/sales_order_data.csv' into table sales_order_data_csv_v1;
+        
+## Creating the Table Schema for Sales Order Data To Stored in ORC Format.        
+                create table sales_order_data_orc
+                (
+                ORDERNUMBER int,
+                QUANTITYORDERED int,
+                PRICEEACH float,
+                ORDERLINENUMBER int,
+                SALES float,
+                STATUS string,
+                QTR_ID int,
+                MONTH_ID int,
+                YEAR_ID int,
+                PRODUCTLINE string,
+                MSRP int,
+                PRODUCTCODE string,
+                PHONE string,
+                CITY string,
+                STATE string,
+                POSTALCODE string,
+                COUNTRY string,
+                TERRITORY string,
+                CONTACTLASTNAME string,
+                CONTACTFIRSTNAME string,
+                DEALSIZE string
+                )
+                stored as orc;
 
-# copy data from sales_order_data_csv_v1 to sales_order_data_orc
+## Now Copy the Data from Sales_order_data_csv_v1 to Sales_Order_data_orc.
 
+ `from sales__order_data_csv_v1 insert overwrite table sales_order_data_orc select *;
+ Performing Some Operation 
 
 select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
 
