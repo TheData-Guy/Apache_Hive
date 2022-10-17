@@ -118,21 +118,22 @@
 
 ## Now Copy the Data from Sales_order_data_csv_v1 to Sales_Order_data_orc.
 
- `from sales__order_data_csv_v1 insert overwrite table sales_order_data_orc select *;
- Performing Some Operation 
+        from sales__order_data_csv_v1 insert overwrite table sales_order_data_orc select *;
+        
+## Performing Some Operation on Sales_Order_Data_Orc to Understand How Number of Mapper and Reducer Work.
 
-select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
+        select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
 
-# here only 1 map and 1 reduce task will get created
+## here only 1 map and 1 reduce task will get created
 
-In order to change the average load for a reducer (in bytes):                                                                                 
-  set hive.exec.reducers.bytes.per.reducer=<number>                                                                                           
-In order to limit the maximum number of reducers:                                                                                             
-  set hive.exec.reducers.max=<number>                                                                                                         
-In order to set a constant number of reducers:                                                                                                
-  set mapreduce.job.reduces=<number> 
+        In order to change the average load for a reducer (in bytes):                                                                                 
+          set hive.exec.reducers.bytes.per.reducer=<number>                                                                                           
+        In order to limit the maximum number of reducers:                                                                                             
+          set hive.exec.reducers.max=<number>                                                                                                         
+        In order to set a constant number of reducers:                                                                                                
+          set mapreduce.job.reduces=<number> 
   
- # change number of reducers to 3
+## change number of reducers to 3
  
  set mapreduce.job.reduces=3;
  create table sales_order_grouped_orc_v1 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
