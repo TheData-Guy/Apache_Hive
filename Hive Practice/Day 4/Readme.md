@@ -124,7 +124,7 @@
 
         select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
 
-## here only 1 map and 1 reduce task will get created
+## For Previous Operation Task  Hivw Engine will Use 1 Mapper and 1 Reducer.
 
         In order to change the average load for a reducer (in bytes):                                                                                 
           set hive.exec.reducers.bytes.per.reducer=<number>                                                                                           
@@ -133,62 +133,64 @@
         In order to set a constant number of reducers:                                                                                                
           set mapreduce.job.reduces=<number> 
   
-## change number of reducers to 3
+## Changing the number of reducers to 3 and Creation the Table sales_order_grouped_orc_v1.
  
- set mapreduce.job.reduces=3;
- create table sales_order_grouped_orc_v1 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
-ar_id;
+        set mapreduce.job.reduces=3;
 
-# after creating the table, check the number of files in hdfs location
+        create table sales_order_grouped_orc_v1 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id;
 
-# change number of reducers to 2
- 
- set mapreduce.job.reduces=2;
- create table sales_order_grouped_orc_v2 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
-ar_id;
+## Changing the number of reducers to 2 and Creation the Table sales_order_grouped_orc_v2.
 
-# after creating the table, check the number of files in hdfs location
+         set mapreduce.job.reduces=2;
+         
+         create table sales_order_grouped_orc_v2 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id;
 
+## After creating the table, checking the number of files in hdfs location
+        
+        sales_order_grouped_orc_v1 ->3 ( Because the Number of Reducer is 3)
+        sales_order_grouped_orc_v2 ->2 ( Because the Number of Reducer is 2)
 
-# set this property if doing static partition
-set hive.mapred.mode=strict;
+## Set this property if doing static partition:
 
-# create table command for partition tables - for Static
+        set hive.mapred.mode=strict;
 
-create table sales_data_static_part                                                                                                     
-    > (                                                                                                                                       
-    > ORDERNUMBER int,                                                                                                                        
-    > QUANTITYORDERED int,                                                                                                                    
-    > SALES float,                                                                                                                            
-    > YEAR_ID int                                                                                                                             
-    > )                                                                                                                                       
-    > partitioned by (COUNTRY string); 
+## Creating table schema for partition tables - for Static
+
+        create table sales_data_static_part                                                                                                     
+             (                                                                                                                                       
+             ORDERNUMBER int,                                                                                                                        
+             QUANTITYORDERED int,                                                                                                                    
+             SALES float,                                                                                                                            
+             YEAR_ID int                                                                                                                             
+             )                                                                                                                                       
+             partitioned by (COUNTRY string); 
     
-# load data in static partition
+## Loading The data in static partition Table
 
-insert overwrite table sales_data_static_part partition(country = 'USA') select ordernumber,quantityordered,sales,year_id from sales_ord
-er_data_orc where country = 'USA';
+        insert overwrite table sales_data_static_part partition(country = 'USA') select ordernumber,quantityordered,sales,year_id from sales_order_data_orc where country ='USA';
 
-# set this property for dynamic partioning
-set hive.exec.dynamic.partition.mode=nonstrict;   
+## Set this property for Dynamic Partioning
 
+        set hive.exec.dynamic.partition.mode=nonstrict;   
 
-hive> create table sales_data_dynamic_part                                                                                                    
-    > (
-    > ORDERNUMBER int,                                                                                                                        
-    > QUANTITYORDERED int,                                                                                                                    
-    > SALES float,                                                                                                                            
-    > YEAR_ID int                                                                                                                             
-    > )
-    > partitioned by (COUNTRY string); 
+## Creating table schema for partition tables - for Dynamic
 
-# load data in dynamic partition table
+        hive> create table sales_data_dynamic_part                                                                                                    
+             (
+             ORDERNUMBER int,                                                                                                                        
+             QUANTITYORDERED int,                                                                                                                    
+             SALES float,                                                                                                                            
+             YEAR_ID int                                                                                                                             
+             )
+             partitioned by (COUNTRY string); 
 
-insert overwrite table sales_data_dynamic_part partition(country) select ordernumber,quantityordered,sales,year_id,country from sales_or
-der_data_orc;
+## Loading data in dynamic partition table
+
+        insert overwrite table sales_data_dynamic_part partition(country) select ordernumber,quantityordered,sales,year_id,country from sales_or
+        der_data_orc;
   
 
-# multilevel partition
+## Multilevel Partition Example
 
 create table sales_data_dynamic_multilevel_part_v1                                                                                      
     > (
@@ -198,7 +200,7 @@ create table sales_data_dynamic_multilevel_part_v1
     > )
     > partitioned by (COUNTRY string, YEAR_ID int); 
     
-# load data in multilevel partitions
+# Loading the  data in Multilevel Partitions Table.
 
-insert overwrite table sales_data_dynamic_multilevel_part_v1 partition(country,year_id) select ordernumber,quantityordered,sales,country
-,year_id from sales_order_data_orc;
+        insert overwrite table sales_data_dynamic_multilevel_part_v1 partition(country,year_id) select ordernumber,quantityordered,sales,country
+        ,year_id from sales_order_data_orc;
