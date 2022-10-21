@@ -1,4 +1,4 @@
-![](/images/hive.png)
+![](/images/Hive3.png)
 
 # Apache Hive
 
