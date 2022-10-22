@@ -92,3 +92,8 @@ After the compilation and optimization steps, the execution engine uses Hadoop t
 
 ### Understanding Different File Formats in Big Data 
 
+## Hive Practice DAY 3
+
+## Hive Practice DAY 4
+
+ ### UDF in Hive  
