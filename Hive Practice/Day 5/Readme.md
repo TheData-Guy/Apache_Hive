@@ -54,22 +54,22 @@
 
 ## Set the Property for Bucketing 
 
-    set hive.enforce.bucketing=true;
+       set hive.enforce.bucketing=true;
     
  ## Creating the Bucket Table for Users Table 
  
 
-     hive> create table buck_users                                                                                                                 
-        > (                                                                                                                                       
-        > id int,                                                                                                                                 
-        > name string,                                                                                                                            
-        > salary int,                                                                                                                             
-        > unit string                                                                                                                             
-        > )                                                                                                                                       
-        > clustered by (id)                                                                                                                       
-        > sorted by (id)                                                                                                                          
-        > into 2 buckets;
- 
+          hive> create table buck_users                                                                                                                 
+             > (                                                                                                                                       
+             > id int,                                                                                                                                 
+             > name string,                                                                                                                            
+             > salary int,                                                                                                                             
+             > unit string                                                                                                                             
+             > )                                                                                                                                       
+             > clustered by (id)                                                                                                                       
+             > sorted by (id)                                                                                                                          
+             > into 2 buckets;
+
  ## Inserting the Data in User Bucket Table
 
      insert overwrite table buck_users select * from users;
@@ -107,7 +107,7 @@ Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
 
     SET hive.auto.convert.join=true;
  
-  SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
+    SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
 
 Mapred Local Task Succeeded . Convert the Join into MapJoin
 Number of reduce tasks is set to 0 since there's no reduce operator
