@@ -25,14 +25,14 @@
     
 ## Creating Table Users
 
-   hive> create table users                                                                                                                      
-       > (                                                                                                                                       
-       > id int,                                                                                                                                 
-       > name string,                                                                                                                            
-       > salary int,                                                                                                                             
-       > unit string                                                                                                                             
-       > )row format delimited                                                                                                                   
-       > fields terminated by ','; 
+        hive> create table users                                                                                                                      
+            > (                                                                                                                                       
+            > id int,                                                                                                                                 
+            > name string,                                                                                                                            
+            > salary int,                                                                                                                             
+            > unit string                                                                                                                             
+            > )row format delimited                                                                                                                   
+            > fields terminated by ','; 
 
 ## Loading the Data in the TABLE 
 
@@ -40,17 +40,17 @@
       
 ## Creating Table Location    
 
-  hive> create table locations                                                                                                                  
-      > (                                                                                                                                       
-      > id int,                                                                                                                                 
-      > location string                                                                                                                         
-      > )                                                                                                                                       
-      > row format delimited                                                                                                                    
-      > fields terminated by ','; 
+       hive> create table locations                                                                                                                  
+           > (                                                                                                                                       
+           > id int,                                                                                                                                 
+           > location string                                                                                                                         
+           > )                                                                                                                                       
+           > row format delimited                                                                                                                    
+           > fields terminated by ','; 
   
  ## Loading the Data in the TABLE 
  
-   load data local inpath 'file:///tmp/hive_class/locations.csv' into table locations; 
+      load data local inpath 'file:///tmp/hive_class/locations.csv' into table locations; 
 
 ## Set the Property for Bucketing 
 
